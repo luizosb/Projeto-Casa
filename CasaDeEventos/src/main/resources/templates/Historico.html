@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Domum Amet</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap-datepicker.standalone.min.css">
+</head>
+<nav class="navbar navbar-defaut navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header"></div>
+	</div>
+
+	<ul class="nav nav-tabs">
+		<li role="presentation"><img class="logo"
+			src="/imagens/L_logo.png" width="2%" height="2%"></li>
+		<li role="presentation"><a href="/home">Home</a></li>
+		<li role="presentation"><a href="/casadeshow">Casa de Show</a></li>
+		<li role="presentation"><a href="/evento">Eventos</a></li>
+		<li role="presentation"><a href="/historico">Histórico</a></li>
+	</ul>
+</nav>
+<body>
+	<form class="form-horizontal form-historico">
+		<div class="panel panel-historico panel-defaut">
+	    		<div class="clearfix">
+					<h3 style="padding-top: 1%; padding-bottom: 1%;"
+						class="panel-title panel-historico" align="center">Domum Amet -
+						Histórico</h3>
+				</div>
+			<div class="panel panel-defaut">
+				<div class="panel-heading">
+					<div class="clearfix">
+						<h1 class="panel-title aw-titulo-panel">Histórico de Compras</h1>
+					</div>
+				</div>
+			<div class="panel-body">
+				<div class="panel-body panel-tabela">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-condensed table ">
+							<thead>
+								<tr>
+									<th class="text-left col-md-2">Banda</th>
+									<th class="text-center col-md-1">Data do Show</th>
+									<th class="text-center col-md-1">Gênero</th>
+									<th class="text-center col-md-1">Local</th>
+									<th class="text-center col-md-1">Preço</th>
+									<th class="text-center col-md-1">Ingressos</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="evento : ${eventos}">
+									<td class="text-left" th:text="${evento.banda}"></td>
+									<td class="text-center" th:text="${{evento.data}}"></td>
+									<td class="text-center" th:text="${evento.genero}"></td>
+									<td class="text-center" th:text="${evento.local}"></td>
+									<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
+								</tr>
+								<tr>
+									<td colspan="7" th:if="${#lists.isEmpty(eventos)}">Nenhum ingresso foi comprado!</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>			
+		</div>
+		</div>
+	</form>
+</body>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/eventos.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.pt-BR.min.js"></script>
+<script src="/js/jquery.maskMoney.min.js"></script>
+</html>
+
+
