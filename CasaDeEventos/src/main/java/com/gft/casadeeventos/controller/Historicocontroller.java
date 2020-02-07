@@ -8,10 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/historico")
 public class Historicocontroller {
 	
+	private static final String HIST_VIEW = "Historico";
+	
+	
 	@RequestMapping
 	public ModelAndView historico() {
-		ModelAndView mv = new ModelAndView("Historico");
+		ModelAndView mv = new ModelAndView(HIST_VIEW);
 		return mv;
 	}
+	
 	
 }
