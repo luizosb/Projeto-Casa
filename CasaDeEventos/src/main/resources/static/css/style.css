@@ -1,6 +1,6 @@
 /*----HOME----*/
 .logo{
-	margin-left:45%;
+	margin-left:49%;
 	margin-top:1%;
 }
 
@@ -33,6 +33,11 @@ body{
 	padding-left: 18%;
 }
 
+.alert{
+	margin-left:10%;
+	margin-right:10%;
+}
+
 /*------Eventos-------*/
 
 .panel-evento{
@@ -55,9 +60,13 @@ body{
 
 
 
+/*-------------Layout-Padrao--------*/
 
-
-
+.btn-login{
+	position:relative;
+	margin-left: 40%;
+	margin-top: 2%;
+}
 
 
 

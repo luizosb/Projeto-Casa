@@ -1,6 +1,7 @@
 package com.gft.casadeeventos.model;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -10,7 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -21,14 +27,23 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID;
 	
+	@NotEmpty(message="Insira o nome do evento.")
+	@Size(max = 100, message = "O evento não pode ter mais de 100 caracteres.")
 	private String nome;
 	
-	private int capacidade;
-	
+	@NotNull(message="A capacidade não pode ser zero.")
+	@DecimalMax(value="60001", message="A capacidade não pode passar de 60 mil pessoas.")
+	@DecimalMin(value="9", message="A capacidade não pode ser menos que 10 pessoas.")
+	private BigInteger capacidade;
+
+	@NotNull(message="Insira a data do evento.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
+	@NotNull(message="Insira o preço do ingresso.")
+	@DecimalMin(value ="0.01", message="O preço não pode ser 0 (zero).")
+	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 4000 reais.")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 
@@ -48,13 +63,7 @@ public class Evento {
 		this.nome = nome;
 	}
 
-	public int getCapacidade() {
-		return capacidade;
-	}
-
-	public void setCapacidade(int capacidade) {
-		this.capacidade = capacidade;
-	}
+	
 
 	public Date getData() {
 		return data;
@@ -62,6 +71,14 @@ public class Evento {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public BigInteger getCapacidade() {
+		return capacidade;
+	}
+
+	public void setCapacidade(BigInteger capacidade) {
+		this.capacidade = capacidade;
 	}
 
 	public BigDecimal getPreco() {

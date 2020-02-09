@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Casadeshow {
@@ -12,11 +17,13 @@ public class Casadeshow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID;
 	
+	@NotEmpty(message="A casa deve possuir um local.")
+	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
 	private String local;
-		
-	private String endereco;
 	
-	private int capacidade;
+	@NotEmpty(message="A casa deve possuir um endereço.")
+	@Size(max = 30, message="O endereço tem que possuir no máximo 60 caracteres.")
+	private String endereco;
 		
 	public Long getID() {
 		return ID;
@@ -30,20 +37,14 @@ public class Casadeshow {
 	public void setLocal(String local) {
 		this.local = local;
 	}
+	
 	public String getEndereco() {
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	public int getCapacidade() {
-		return capacidade;
-	}
-	public void setCapacidade(int capacidade) {
-		this.capacidade = capacidade;
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
