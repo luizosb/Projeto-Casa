@@ -1,7 +1,6 @@
 package com.gft.casadeeventos.model;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -16,7 +15,6 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -25,16 +23,16 @@ public class Evento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID;
+	private Long codigo;
 	
-	@NotEmpty(message="Insira o nome do evento.")
+	@NotNull(message="Insira o nome do evento.")
 	@Size(max = 100, message = "O evento não pode ter mais de 100 caracteres.")
 	private String nome;
 	
 	@NotNull(message="A capacidade não pode ser zero.")
-	@DecimalMax(value="60001", message="A capacidade não pode passar de 60 mil pessoas.")
-	@DecimalMin(value="9", message="A capacidade não pode ser menos que 10 pessoas.")
-	private BigInteger capacidade;
+	@DecimalMin(value ="49.0", message="A capacidade mínima é de 50 pessoas pelo menos.")
+	@DecimalMax(value="60001.00", message="A capacidade máxima deve ser de 60001 pessoas.")
+	private Integer capacidade;
 
 	@NotNull(message="Insira a data do evento.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -47,12 +45,14 @@ public class Evento {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 
-	public Long getID() {
-		return ID;
+	
+
+	public Long getCodigo() {
+		return codigo;
 	}
 
-	public void setID(Long iD) {
-		ID = iD;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -63,7 +63,13 @@ public class Evento {
 		this.nome = nome;
 	}
 
-	
+	public Integer getCapacidade() {
+		return capacidade;
+	}
+
+	public void setCapacidade(Integer capacidade) {
+		this.capacidade = capacidade;
+	}
 
 	public Date getData() {
 		return data;
@@ -73,13 +79,7 @@ public class Evento {
 		this.data = data;
 	}
 
-	public BigInteger getCapacidade() {
-		return capacidade;
-	}
-
-	public void setCapacidade(BigInteger capacidade) {
-		this.capacidade = capacidade;
-	}
+	
 
 	public BigDecimal getPreco() {
 		return preco;
@@ -93,7 +93,7 @@ public class Evento {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
 
@@ -106,13 +106,15 @@ public class Evento {
 		if (getClass() != obj.getClass())
 			return false;
 		Evento other = (Evento) obj;
-		if (ID == null) {
-			if (other.ID != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!ID.equals(other.ID))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	

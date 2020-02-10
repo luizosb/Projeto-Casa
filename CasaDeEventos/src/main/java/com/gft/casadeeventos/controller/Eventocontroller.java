@@ -34,10 +34,10 @@ public class Eventocontroller {
 		return mv;
 	}
 	
-	@RequestMapping("{ID}")
-	public ModelAndView edicao(@PathVariable("ID") Optional<Evento> eventoss) {
+	@RequestMapping("{codigo}")
+	public ModelAndView editar(@PathVariable("codigo") Optional<Evento> eventoedit) {
 		ModelAndView mv = new ModelAndView(EVENTO_VIEW);
-		mv.addObject(eventoss);
+		mv.addObject(eventoedit);
 		return mv;
 	}
 	

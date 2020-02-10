@@ -17,7 +17,7 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<input type="hidden" th:field="*{ID}"/>
+				<input type="hidden" th:field="*{codigo}"/>
 				<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 					<label for="nome" class="col-sm-2 control-label">Nome do
 						Evento</label>
@@ -70,20 +70,20 @@
 						</thead>
 						<tbody>
 							<tr th:each="evento : ${eventos}">
-								<td class="text-center" th:text="${evento.ID}">1</td>
+								<td class="text-center" th:text="${evento.codigo}">1</td>
 								<td class="text-center" th:text="${evento.nome}"></td>
 								<td class="text-center" th:text="${evento.capacidade}"></td>
 								<td class="text-center" th:text="${{evento.data}}"></td>
 								<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
 								<td class="text-center">Casa</td>
 							    <td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/evento/{ID}(ID=${evento.ID})}">
+									<a class="btn btn-link btn-xs" th:href="@{/evento/{id}(id=${evento.codigo})}">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5" th:if="${#lists.isEmpty(eventos)}">Nenhuma
+								<td colspan="7" th:if="${#lists.isEmpty(eventos)}">Nenhuma
 									casa foi encontrada!</td>
 							</tr>
 						</tbody>
