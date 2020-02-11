@@ -1,7 +1,6 @@
 package com.gft.casadeeventos.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,7 @@ public class Eventocontroller {
 	
 	@Autowired
 	private Eventos event;
-	
+		
 	@RequestMapping
 	public ModelAndView evento() {
 		List <Evento> todosEventos = event.findAll();
@@ -35,11 +34,19 @@ public class Eventocontroller {
 	}
 	
 	@RequestMapping("{codigo}")
-	public ModelAndView editar(@PathVariable("codigo") Optional<Evento> eventoedit) {
+	public ModelAndView editar(@PathVariable("codigo") Evento eventoedit) {
 		ModelAndView mv = new ModelAndView(EVENTO_VIEW);
 		mv.addObject(eventoedit);
 		return mv;
 	}
+	
+	@RequestMapping(value ="{codigo}", method = RequestMethod.DELETE)
+	public ModelAndView excluir(@PathVariable Long codigo, RedirectAttributes attributes){
+		ModelAndView mv = new ModelAndView("redirect:/evento");
+		event.deleteById(codigo);
+		attributes.addFlashAttribute("mensagem", "Evento excluido com sucesso!");
+		return mv;
+	}	
 	
 	
 	@RequestMapping(method= RequestMethod.POST)

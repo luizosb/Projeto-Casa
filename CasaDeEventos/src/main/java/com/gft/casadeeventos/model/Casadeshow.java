@@ -1,14 +1,17 @@
 package com.gft.casadeeventos.model;
 
+
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+
 
 @Entity
 public class Casadeshow {
@@ -17,12 +20,13 @@ public class Casadeshow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID;
 	
+	@OneToMany
 	@NotEmpty(message="A casa deve possuir um local.")
 	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
-	private String local;
+	private List<Evento> local;
 	
 	@NotEmpty(message="A casa deve possuir um endereço.")
-	@Size(max = 30, message="O endereço tem que possuir no máximo 60 caracteres.")
+	@Size(max = 60, message="O endereço tem que possuir no máximo 60 caracteres.")
 	private String endereco;
 		
 	public Long getID() {
@@ -31,10 +35,11 @@ public class Casadeshow {
 	public void setID(Long iD) {
 		ID = iD;
 	}
-	public String getLocal() {
+	
+	public List<Evento> getLocal() {
 		return local;
 	}
-	public void setLocal(String local) {
+	public void setLocal(List<Evento> local) {
 		this.local = local;
 	}
 	

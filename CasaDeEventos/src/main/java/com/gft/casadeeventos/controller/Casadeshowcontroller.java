@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,12 +33,27 @@ public class Casadeshowcontroller {
 		return mv;
 	}
 	
+	@RequestMapping("{ID}")
+	public ModelAndView editar(@PathVariable("ID") Casadeshow casaedit) {
+		ModelAndView mv = new ModelAndView(CASA_VIEW);
+		mv.addObject(casaedit);
+		return mv;
+	}
+	
+	@RequestMapping(value ="excluir/{ID}")
+	public ModelAndView excluir(@PathVariable Long ID, RedirectAttributes attributes){
+		ModelAndView mv = new ModelAndView("redirect:/evento");
+		casa.deleteById(ID);
+		attributes.addFlashAttribute("mensagem", "Evento excluido com sucesso!");
+		return mv;
+	}	
+	
 	@RequestMapping(method= RequestMethod.POST)
-	public String salvar(@Validated Casadeshow casas, Errors errors, RedirectAttributes attributes) {
+	public String salvar(@Validated Casadeshow casasShow, Errors errors, RedirectAttributes attributes) {
 		if(errors.hasErrors()){
 			return "Casadeshow";			
 		}
-		casa.save(casas);
+		casa.save(casasShow);
 		attributes.addFlashAttribute("mensagem", "Casa salva com sucesso!!");
 		return "redirect:/casadeshow" ;
 	}

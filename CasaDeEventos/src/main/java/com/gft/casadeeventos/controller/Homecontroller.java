@@ -13,8 +13,11 @@ public class Homecontroller {
 	@RequestMapping
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView(HOME_VIEW);
+		
 		return mv;
 	}
+	
+	
 		
 	
 	

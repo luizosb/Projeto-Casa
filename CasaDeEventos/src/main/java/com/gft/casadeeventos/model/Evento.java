@@ -3,11 +3,13 @@ package com.gft.casadeeventos.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
@@ -15,6 +17,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -25,8 +28,8 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotNull(message="Insira o nome do evento.")
-	@Size(max = 100, message = "O evento não pode ter mais de 100 caracteres.")
+	@NotEmpty(message="Insira o nome do evento.")
+	@Size(max = 20, message = "O evento não pode ter mais de 100 caracteres.")
 	private String nome;
 	
 	@NotNull(message="A capacidade não pode ser zero.")
@@ -44,8 +47,9 @@ public class Evento {
 	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 4000 reais.")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
-
 	
+	//@ManyToOne
+	private Casadeshow local;
 
 	public Long getCodigo() {
 		return codigo;
@@ -71,6 +75,14 @@ public class Evento {
 		this.capacidade = capacidade;
 	}
 
+	public Casadeshow getLocal() {
+		return local;
+	}
+
+	public void setLocal(Casadeshow local) {
+		this.local = local;
+	}
+
 	public Date getData() {
 		return data;
 	}
@@ -78,8 +90,6 @@ public class Evento {
 	public void setData(Date data) {
 		this.data = data;
 	}
-
-	
 
 	public BigDecimal getPreco() {
 		return preco;
