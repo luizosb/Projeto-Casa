@@ -48,8 +48,8 @@ public class Evento {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 	
-	//@ManyToOne
-	private Casadeshow local;
+//	@ManyToOne
+	private String local;
 
 	public Long getCodigo() {
 		return codigo;
@@ -75,11 +75,19 @@ public class Evento {
 		this.capacidade = capacidade;
 	}
 
-	public Casadeshow getLocal() {
+//	public Casadeshow getLocal() {
+//		return local;
+//	}
+//
+//	public void setLocal(Casadeshow local) {
+//		this.local = local;
+//	}
+
+	public String getLocal() {
 		return local;
 	}
 
-	public void setLocal(Casadeshow local) {
+	public void setLocal(String local) {
 		this.local = local;
 	}
 

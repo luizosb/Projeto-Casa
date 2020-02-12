@@ -23,7 +23,7 @@ public class Eventocontroller {
 	
 	@Autowired
 	private Eventos event;
-		
+	
 	@RequestMapping
 	public ModelAndView evento() {
 		List <Evento> todosEventos = event.findAll();
@@ -33,22 +33,19 @@ public class Eventocontroller {
 		return mv;
 	}
 	
-	@RequestMapping("{codigo}")
+	@RequestMapping("/editar/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Evento eventoedit) {
 		ModelAndView mv = new ModelAndView(EVENTO_VIEW);
 		mv.addObject(eventoedit);
 		return mv;
 	}
 	
-	@RequestMapping(value ="{codigo}", method = RequestMethod.DELETE)
-	public ModelAndView excluir(@PathVariable Long codigo, RedirectAttributes attributes){
-		ModelAndView mv = new ModelAndView("redirect:/evento");
+	@RequestMapping(value ="{codigo}", method = RequestMethod.GET)
+	public String excluir(@PathVariable Long codigo){
 		event.deleteById(codigo);
-		attributes.addFlashAttribute("mensagem", "Evento excluido com sucesso!");
-		return mv;
+		return "redirect:/evento";
 	}	
-	
-	
+		
 	@RequestMapping(method= RequestMethod.POST)
 	public String salvar(@Validated Evento evento, Errors errors, RedirectAttributes attributes) {
 		if(errors.hasErrors()){
@@ -58,5 +55,5 @@ public class Eventocontroller {
 		attributes.addFlashAttribute("mensagem", "Evento salvo com sucesso!!");
 		return "redirect:/evento";
 	}
-
+	
 }

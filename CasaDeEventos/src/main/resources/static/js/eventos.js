@@ -1,8 +1,8 @@
-$('confirmarExcluir').on('shown.bs.modal', function (event) {
+$('#confirmarExcluir').on('show.bs.modal', function (event) {
 	 var button = $(event.relatedTarget);
 	 
 	 var codigoEvento = button.data('codigo');
-	 var nomeEvento = button.data('nme');
+	 var nomeEvento = button.data('nome');
 	 
 	 var modal = $(this);
 	 var form = modal.find('form');

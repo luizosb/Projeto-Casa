@@ -20,29 +20,22 @@ public class Casadeshow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID;
 	
-	@OneToMany
-	@NotEmpty(message="A casa deve possuir um local.")
-	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
-	private List<Evento> local;
-	
 	@NotEmpty(message="A casa deve possuir um endereço.")
 	@Size(max = 60, message="O endereço tem que possuir no máximo 60 caracteres.")
 	private String endereco;
 		
+	//@OneToMany
+	@NotEmpty(message="A casa deve possuir um local.")
+	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
+	private String local;
+	
 	public Long getID() {
 		return ID;
 	}
 	public void setID(Long iD) {
 		ID = iD;
 	}
-	
-	public List<Evento> getLocal() {
-		return local;
-	}
-	public void setLocal(List<Evento> local) {
-		this.local = local;
-	}
-	
+		
 	public String getEndereco() {
 		return endereco;
 	}
@@ -50,6 +43,13 @@ public class Casadeshow {
 		this.endereco = endereco;
 	}
 
+	public String getLocal() {
+		return local;
+	}
+	public void setLocal(String local) {
+		this.local = local;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,4 +74,5 @@ public class Casadeshow {
 		return true;
 	}
 
+	
 }

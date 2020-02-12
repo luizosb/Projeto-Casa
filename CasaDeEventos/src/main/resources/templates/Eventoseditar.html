@@ -66,8 +66,6 @@
 								<th class="text-center col-md-1">Data</th>
 								<th class="text-center col-md-1">Local</th>
 								<th class="text-center col-md-1">Preço do Ingresso</th>
-								<th class="col-md-1"></th>
-								<th class="col-md-1"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,26 +76,13 @@
 								<td class="text-center" th:text="${{evento.data}}"></td>
 								<td class="text-center" >Casa</td>
 								<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
-							    <td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/evento/editar/{id}(id=${evento.codigo})}">
-										<span >Editar</span>
-									</a>
-								</td>
-								<td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/evento/{id}(id=${evento.codigo})}">
-									  	<span>Deletar</span>
-									</a>
-								</td>
 							</tr>
-							<tr>
-								<td colspan="8" th:if="${#lists.isEmpty(eventos)}">Nenhum evento foi encontrado!</td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
 				
 			</div>
-				<div layout:insert="MensagemExcluir"></div>
 		</div>
 	</form>
 </section>

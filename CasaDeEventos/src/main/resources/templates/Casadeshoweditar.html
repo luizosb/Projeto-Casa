@@ -17,7 +17,6 @@
 				</div>
 			</div>
 			<div class="panel-body">
-			  <input type="hidden" th:field="*{ID}"/>
 				<div class="form-group"th:classappend="${#fields.hasErrors('endereco')} ? has-error">
 					<label for="endereco" class="col-sm-2 control-label">Endereço</label>
 					<div class="col-sm-2">
@@ -43,8 +42,6 @@
 								<th class="text-center col-md-1">#</th>
 								<th class="text-center col-md-1">Endereço</th>
 								<th class="text-center col-md-1">Local</th>
-								<th class="text-center col-md-1">Editar</th>
-								<th class="text-center col-md-1">Deletar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,16 +49,6 @@
 								<td class="text-center" th:text="${casa.ID}">1</td>
 								<td class="text-center" th:text="${casa.endereco}"></td>
 								<td class="text-center" th:text="${casa.local}"></td>
-								<td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/editar/{id}(id=${casa.ID})}">
-										<span >Editar</span>
-									</a>
-								</td>
-								<td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/{id}(id=${casa.ID})}">
-										<span>Deletar</span>
-									</a>
-								</td>																
 							</tr>
 							<tr>
 								<td colspan="3" th:if="${#lists.isEmpty(casas)}">Nenhuma

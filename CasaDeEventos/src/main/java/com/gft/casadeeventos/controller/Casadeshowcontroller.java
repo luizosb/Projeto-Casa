@@ -33,19 +33,18 @@ public class Casadeshowcontroller {
 		return mv;
 	}
 	
-	@RequestMapping("{ID}")
+	@RequestMapping("/editar/{ID}")
 	public ModelAndView editar(@PathVariable("ID") Casadeshow casaedit) {
 		ModelAndView mv = new ModelAndView(CASA_VIEW);
 		mv.addObject(casaedit);
 		return mv;
 	}
 	
-	@RequestMapping(value ="excluir/{ID}")
-	public ModelAndView excluir(@PathVariable Long ID, RedirectAttributes attributes){
-		ModelAndView mv = new ModelAndView("redirect:/evento");
+	@RequestMapping(value ="{ID}")
+	public String excluir(@PathVariable Long ID, RedirectAttributes attributes){
 		casa.deleteById(ID);
-		attributes.addFlashAttribute("mensagem", "Evento excluido com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Casa excluída com sucesso!");
+		return "redirect:/casadeshow";
 	}	
 	
 	@RequestMapping(method= RequestMethod.POST)
