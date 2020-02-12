@@ -7,15 +7,50 @@
 <title>Domum Amet - Home</title>
 </head>
 <section layout:fragment="conteudo">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-	
+	<form class="form-horizontal" action="/home" th:object="${evento}">
+		<div class="panel panel-evento panel-defaut">
+			<div class="panel heading">
+				<div class="clearfix">
+					<h3 style="padding-top: 1%; padding-bottom: 1%;"
+						class="panel-title panel-evento" align="center">Domum Amet -
+						Home</h3>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table
+						class="table table-bordered table-hover table-condensed table">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">#</th>
+								<th class="text-center col-md-1">Nome</th>
+								<th class="text-center col-md-1">Capacidade</th>
+								<th class="text-center col-md-1">Data</th>
+								<th class="text-center col-md-1">Local</th>
+								<th class="text-center col-md-1">Preço do Ingresso</th>
+								<th class="col-md-1"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="evento : ${eventos}">
+								<td class="text-center" th:text="${evento.codigo}">1</td>
+								<td class="text-center" th:text="${evento.nome}"></td>
+								<td class="text-center" th:text="${evento.capacidade}"></td>
+								<td class="text-center" th:text="${{evento.data}}"></td>
+								<td class="text-center">Casa</td>
+								<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
+								<td class="text-center"><a class="btn btn-link btn-xs"
+									th:href="@{/evento/comprar/{id}(id=${evento.codigo})}"> 
+									<span>Comprar</span>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>
+
 </section>
 
 </html>

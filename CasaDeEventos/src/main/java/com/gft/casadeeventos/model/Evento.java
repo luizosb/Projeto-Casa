@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
@@ -22,6 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
+@SequenceGenerator(name="evento_seq", sequenceName="")
 public class Evento {
 
 	@Id
@@ -48,7 +50,7 @@ public class Evento {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 	
-//	@ManyToOne
+	//@ManyToOne
 	private String local;
 
 	public Long getCodigo() {
