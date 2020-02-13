@@ -3,7 +3,6 @@ package com.gft.casadeeventos.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+@SuppressWarnings("deprecation")
 @Entity
 @SequenceGenerator(name="evento_seq", sequenceName="")
 public class Evento {
@@ -50,8 +50,13 @@ public class Evento {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 	
-	//@ManyToOne
-	private String local;
+	@ManyToOne
+	@JoinColumn
+	//@NotNull(message="Insira o local do evento.")
+	private Casadeshow local;
+	
+	
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -77,21 +82,21 @@ public class Evento {
 		this.capacidade = capacidade;
 	}
 
-//	public Casadeshow getLocal() {
-//		return local;
-//	}
-//
-//	public void setLocal(Casadeshow local) {
-//		this.local = local;
-//	}
-
-	public String getLocal() {
+	public Casadeshow getLocal() {
 		return local;
 	}
 
-	public void setLocal(String local) {
+	public void setLocal(Casadeshow local) {
 		this.local = local;
 	}
+
+//	public String getLocal() {
+//		return local;
+//	}
+//
+//	public void setLocal(String local) {
+//		this.local = local;
+//	}
 
 	public Date getData() {
 		return data;

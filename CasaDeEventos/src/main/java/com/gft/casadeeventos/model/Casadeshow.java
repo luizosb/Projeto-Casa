@@ -1,6 +1,7 @@
 package com.gft.casadeeventos.model;
 
 
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-
 
 @Entity
 public class Casadeshow {
@@ -24,10 +23,13 @@ public class Casadeshow {
 	@Size(max = 60, message="O endereço tem que possuir no máximo 60 caracteres.")
 	private String endereco;
 		
-	//@OneToMany
 	@NotEmpty(message="A casa deve possuir um local.")
 	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
-	private String local;
+	private String localizacao;
+	
+		
+	@OneToMany
+	private List<Evento> envents;
 	
 	public Long getID() {
 		return ID;
@@ -35,7 +37,7 @@ public class Casadeshow {
 	public void setID(Long iD) {
 		ID = iD;
 	}
-		
+
 	public String getEndereco() {
 		return endereco;
 	}
@@ -43,11 +45,17 @@ public class Casadeshow {
 		this.endereco = endereco;
 	}
 
-	public String getLocal() {
-		return local;
+	public List<Evento> getEnvents() {
+		return envents;
 	}
-	public void setLocal(String local) {
-		this.local = local;
+	public void setEnvents(List<Evento> envents) {
+		this.envents = envents;
+	}
+	public String getLocalizacao() {
+		return localizacao;
+	}
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
 	}
 	
 	@Override

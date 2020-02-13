@@ -24,10 +24,10 @@
 						<input type="text" class="form-control" id="endereco" th:field="*{endereco}" />
 					</div>
 				</div>
-				<div class="form-group" th:classappend="${#fields.hasErrors('local')} ? has-error">
-					<label for="local" class="col-sm-2 control-label">Local</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('localizacao')} ? has-error">
+					<label for="localizacao" class="col-sm-2 control-label">Local</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="local" th:field="*{local}" />
+						<input type="text" class="form-control" id="localizacao" th:field="*{localizacao}" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -51,7 +51,7 @@
 							<tr th:each="casa : ${casas}">
 								<td class="text-center" th:text="${casa.ID}">1</td>
 								<td class="text-center" th:text="${casa.endereco}"></td>
-								<td class="text-center" th:text="${casa.local}"></td>
+								<td class="text-center" th:text="${casa.localizacao}"></td>
 								<td class="text-center">
 									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/editar/{id}(id=${casa.ID})}">
 										<span >Editar</span>

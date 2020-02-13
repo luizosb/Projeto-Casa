@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.gft.casadeeventos.model.Casadeshow;
 import com.gft.casadeeventos.model.Evento;
+import com.gft.casadeeventos.repository.Casadeshows;
 import com.gft.casadeeventos.repository.Eventos;
 
 @Controller
@@ -24,12 +26,17 @@ public class Eventocontroller {
 	@Autowired
 	private Eventos event;
 	
+	@Autowired
+	private Casadeshows casa;
+	
 	@RequestMapping
 	public ModelAndView evento() {
 		List <Evento> todosEventos = event.findAll();
 		ModelAndView mv = new ModelAndView(EVENTO_VIEW);
 		mv.addObject(new Evento());
 		mv.addObject("eventos", todosEventos);
+		List <Casadeshow> todasCasas = casa.findAll();
+		mv.addObject("casas", todasCasas);
 		return mv;
 	}
 	
