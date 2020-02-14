@@ -27,8 +27,12 @@ public class Homecontroller {
 		return mv;
 	}
 	
+	@RequestMapping("/comprar")
+	public String comprar() {
+		return "HomeComprar";
+	}
+
 	
-		
 	
 	
 }

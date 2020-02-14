@@ -4,6 +4,7 @@ package com.gft.casadeeventos.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Casadeshow {
 	private String localizacao;
 	
 		
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="local", orphanRemoval=true)
 	private List<Evento> envents;
 	
 	public Long getID() {

@@ -7,7 +7,7 @@
 <title>Domum Amet - Home</title>
 </head>
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" action="/home" th:object="${evento}">
+	<form class="form-horizontal" action="/home/comprar" th:object="${evento}">
 		<div class="panel panel-evento panel-defaut">
 			<div class="panel heading">
 				<div class="clearfix">
@@ -21,8 +21,7 @@
 						<h2 class="card-title" align="center" th:text="${evento.nome}"></h2>
 						<h4 class="text-center" th:text="|Capacidade: ${evento.capacidade}|"></h4>
 								<h5 class="text-center" th:text="|Data do evento : ${{evento.data}}|"></h5>
-								<h5 class="text-center" th:text="${evento.local.localizacao}"></h5>
-
+								<h6 class="text-center" th:text="|Local: ${evento.local.localizacao}|"></h6>
 								<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>
 								<h6 class="text-center"><a class="btn btn-primary btn-md"
 									th:href="@{/home/comprar/{id}(id=${evento.codigo})}"> 

@@ -44,6 +44,8 @@ public class Eventocontroller {
 	public ModelAndView editar(@PathVariable("codigo") Evento eventoedit) {
 		ModelAndView mv = new ModelAndView(EVENTO_VIEW);
 		mv.addObject(eventoedit);
+		List <Casadeshow> todasCasas = casa.findAll();
+		mv.addObject("casas", todasCasas);
 		return mv;
 	}
 	

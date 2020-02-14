@@ -50,6 +50,14 @@
 							data-date-today-highlight="true" />
 					</div>
 				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('local')} ? has-error">
+					<label for="local" class="col-sm-2 control-label">Nome da Casa</label>
+					<div class="col-sm-2">
+						<select  class="form-control" id="local" name="local" >
+							<option th:each="local : ${casas}" th:value="${local.ID}" th:text="${local.localizacao}"></option>
+						</select>
+					</div>
+				</div>
 			<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-salvar btn-primary">Salvar</button>
@@ -64,6 +72,7 @@
 								<th class="text-center col-md-1">Nome</th>
 								<th class="text-center col-md-1">Capacidade</th>
 								<th class="text-center col-md-1">Data</th>
+								<th class="text-center col-md-1">Casa</th>
 								<th class="text-center col-md-1">Local</th>
 								<th class="text-center col-md-1">Preço do Ingresso</th>
 							</tr>
@@ -74,7 +83,7 @@
 								<td class="text-center" th:text="${evento.nome}"></td>
 								<td class="text-center" th:text="${evento.capacidade}"></td>
 								<td class="text-center" th:text="${{evento.data}}"></td>
-								<td class="text-center" >Casa</td>
+								<td class="text-center" th:text="${evento.local.localizacao}"></td>
 								<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
 							</tr>
 							

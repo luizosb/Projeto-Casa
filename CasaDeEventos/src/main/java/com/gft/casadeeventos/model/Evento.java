@@ -51,8 +51,8 @@ public class Evento {
 	private BigDecimal preco;
 	
 	@ManyToOne
-	@JoinColumn
-	//@NotNull(message="Insira o local do evento.")
+	@JoinColumn(nullable=false)
+	@NotNull(message="Insira uma casa.")
 	private Casadeshow local;
 	
 	
