@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -55,8 +57,8 @@ public class Evento {
 	@NotNull(message="Insira uma casa.")
 	private Casadeshow local;
 	
-	
-	
+	@Enumerated(EnumType.STRING)
+	private Genero genero;
 
 	public Long getCodigo() {
 		return codigo;
@@ -90,13 +92,13 @@ public class Evento {
 		this.local = local;
 	}
 
-//	public String getLocal() {
-//		return local;
-//	}
-//
-//	public void setLocal(String local) {
-//		this.local = local;
-//	}
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
 
 	public Date getData() {
 		return data;
