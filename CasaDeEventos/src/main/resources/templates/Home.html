@@ -11,18 +11,17 @@
 		<div class="panel panel-evento panel-defaut">
 			<div class="panel heading">
 				<div class="clearfix">
-					<h3 style="padding-top: 1%; padding-bottom: 1%;"
+					<h3 style="padding-top: 1%; padding-bottom: 1%; font-size: 250%;font-family: MV Boli;"
 						class="panel-title panel-evento" align="center">Domum Amet -
 						Home</h3>
 				</div>
 			</div>
 				<div class="card" th:each="evento : ${eventos}">
 					<div class="card-body" >
-						<h2 class="card-title" align="center" th:text="${evento.nome}"></h2>
+						<h2 class="card-title" style="font-size: 400%;" align="center" th:text="${evento.nome}"></h2>
 						<h4 class="text-center" th:text="|Capacidade: ${evento.capacidade}|"></h4>
-								<h5 class="text-center" th:text="|Data do evento : ${{evento.data}}|"></h5>
-								<h5 class="text-center" th:text="${evento.local.localizacao}"></h5>
-
+								<h5 class="text-center" style="font-size: 120%;" th:text="|Data do evento : ${{evento.data}}|"></h5>
+								<h5 class="text-center" style="font-size: 150%;" th:text="${evento.local.localizacao}"></h5>
 								<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>
 								<h6 class="text-center"><a class="btn btn-primary btn-md"
 									th:href="@{/home/comprar/{id}(id=${evento.codigo})}"> 

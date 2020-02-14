@@ -14,7 +14,7 @@
 		<div class="panel panel-evento panel-defaut">
 			<div class="panel heading">
 				<div class="clearfix">
-					<h3 style="padding-top: 1%; padding-bottom: 1%;"
+					<h3 style="padding-top: 1%; padding-bottom: 1%; font-size: 250%;font-family: MV Boli;"
 						class="panel-title panel-evento" align="center">Domum Amet - Eventos</h3>
 				</div>
 			</div>
@@ -25,21 +25,23 @@
 					<label for="nome" class="col-sm-2 control-label">Nome do
 						Evento</label>
 					<div class="col-sm-4">
-						<input type="text" autocomplete = "off" class="form-control" id="nome" th:field="*{nome}" />
+						<input type="text" autocomplete = "off" class="form-control" id="nome" th:field="*{nome}" 
+						placeholder="Digite o nome do evento."/>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('capacidade')} ? has-error">
 					<label for="capacidade" class="col-sm-2 control-label">Capacidade</label>
 					<div class="col-sm-2">
 						<input type="text" autocomplete = "off" class="form-control" id="capacidade"
-							th:field="*{capacidade}" />
+							th:field="*{capacidade}" placeholder="Digite a capacidade."/>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('preco')} ? has-error">
 					<label for="preco" class="col-sm-2 control-label">Valor do
 						Ingresso</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" autocomplete = "off" id="preco" th:field="*{preco}" />
+						<input type="text" class="form-control js-currency"  autocomplete = "off" id="preco" th:field="*{preco}"
+						placeholder="Digite preço do ingresso." />
 					</div>
 				</div>
 
@@ -49,7 +51,8 @@
 						<input type="text" autocomplete = "off" class="form-control" id="data" th:field="*{data}"
 							data-provide="datepicker" data-date-format="dd/mm/yyyy"
 							data-date-language="pt-BR" data-date-autoclose="true"
-							data-date-today-highlight="true" />
+							data-date-today-highlight="true" data-date-orientation="bottom" 
+							placeholder="Selecione a data."/>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('local')} ? has-error">

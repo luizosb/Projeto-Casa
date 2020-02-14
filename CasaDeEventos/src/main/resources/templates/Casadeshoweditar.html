@@ -12,7 +12,7 @@
 		<div class="panel panel-casa panel-defaut">
 			<div class="panel heading">
 				<div class="clearfix">
-					<h3 style="padding-top: 1%; padding-bottom: 1%;"
+					<h3 style="padding-top: 1%; padding-bottom: 1%; font-size: 250%;font-family: MV Boli;"
 						class="panel-title panel-casa" align="center">Cadastro da Casa de Show</h3>
 				</div>
 			</div>
@@ -20,13 +20,15 @@
 				<div class="form-group"th:classappend="${#fields.hasErrors('endereco')} ? has-error">
 					<label for="endereco" class="col-sm-2 control-label">Endereço</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="endereco" th:field="*{endereco}" />
+						<input type="text" class="form-control" id="endereco" th:field="*{endereco}" 
+						placeholder="Digite o endereço da casa de show."/>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('local')} ? has-error">
 					<label for="local" class="col-sm-2 control-label">Casa</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="local" th:field="*{local}" />
+						<input type="text" class="form-control" id="local" th:field="*{local}" 
+						placeholder="Digite o nome da casa de show."/>
 					</div>
 				</div>
 				<div class="form-group">

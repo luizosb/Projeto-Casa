@@ -1,23 +1,35 @@
 /*----HOME----*/
-.logo{
-	margin-left:49%;
-	margin-top:1%;
-}
 
 body{
 	background-color: #247BA0;
 }
 .navbar{
 	background-color: #70C1B3;
+	font-family: MV Boli;
+	font-size: 200%;
 }
+
 .nav a{
 	color: black;	
+	
 }
 
 .nav-tabs{
 	padding-left: 36%;
 }
 
+.card{
+	border: 3px solid black;
+	margin-bottom: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-weight: bold;
+	font-family: fantasy;
+}
+
+.form{
+	margin-bottom: 2%;
+}
 /*-------Casa de Show-------*/
 
 .panel-title{
@@ -60,8 +72,10 @@ body{
 
 .btn-login{
 	position:relative;
-	margin-left: 40%;
+	margin-left: 90%;
 	margin-top: 2%;
+	font-family: fantasy;
+	font-size: 75%;
 }
 
 

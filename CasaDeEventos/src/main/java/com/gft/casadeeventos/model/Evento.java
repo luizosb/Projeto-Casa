@@ -48,7 +48,7 @@ public class Evento {
 	
 	@NotNull(message="Insira o preço do ingresso.")
 	@DecimalMin(value ="0.01", message="O preço não pode ser 0 (zero).")
-	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 4000 reais.")
+	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 7000 reais.")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 	

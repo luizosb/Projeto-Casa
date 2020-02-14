@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -45,7 +46,9 @@ public class Eventocontroller {
 	
 	@RequestMapping("/editar/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Evento eventoedit) {
+		List <Evento> todosEventos = event.findAll();
 		ModelAndView mv = new ModelAndView("Eventoseditar");
+		mv.addObject("eventos", todosEventos);
 		mv.addObject(eventoedit);
 		List <Casadeshow> todasCasas = casa.findAll();
 		mv.addObject("casas", todasCasas);
@@ -69,6 +72,8 @@ public class Eventocontroller {
 			mv.addObject("casas", todasCasas);
 			return mv;			
 		}
+		
+		try {
 		event.save(evento);
 		List <Evento> todosEventos = event.findAll();
 		mv.addObject(new Evento());
@@ -77,6 +82,10 @@ public class Eventocontroller {
 		mv.addObject("casas", todasCasas);
 		mv.addObject("mensagem", "Evento salvo com sucesso!!");
 		return mv;		
+		} catch (DataIntegrityViolationException e) {
+			errors.rejectValue("data", null,"Formato de data inválido.");
+			return mv;
+		}
 	}
 	
 	@ModelAttribute("todosGeneros")
