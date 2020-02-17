@@ -46,6 +46,8 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
+	private int qtdIngresso;
+	
 	@NotNull(message="Insira o preço do ingresso.")
 	@DecimalMin(value ="0.01", message="O preço não pode ser 0 (zero).")
 	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 7000 reais.")
@@ -82,6 +84,14 @@ public class Evento {
 
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
+	}
+
+	public int getqtdIngresso() {
+		return qtdIngresso;
+	}
+
+	public void setqtdIngresso(int qtdIngresso) {
+		this.qtdIngresso = qtdIngresso;
 	}
 
 	public Casadeshow getLocal() {

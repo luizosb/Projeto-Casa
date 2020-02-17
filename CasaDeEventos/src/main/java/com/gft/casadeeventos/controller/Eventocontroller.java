@@ -57,8 +57,9 @@ public class Eventocontroller {
 	
 	
 	@RequestMapping(value ="{codigo}", method = RequestMethod.GET)
-	public String excluir(@PathVariable Long codigo){
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes){
 		event.deleteById(codigo);
+		attributes.addFlashAttribute("mensagem", "Evento excluído com sucesso!");
 		return "redirect:/evento";
 	}	
 		
