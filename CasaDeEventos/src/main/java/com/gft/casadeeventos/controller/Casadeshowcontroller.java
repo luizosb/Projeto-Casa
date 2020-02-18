@@ -35,8 +35,10 @@ public class Casadeshowcontroller {
 	
 	@RequestMapping("/editar/{ID}")
 	public ModelAndView editar(@PathVariable("ID") Casadeshow casaedit) {
-		ModelAndView mv = new ModelAndView(CASA_VIEW);
+		List <Casadeshow> todasCasas = casa.findAll();
+		ModelAndView mv = new ModelAndView("Casadeshoweditar");
 		mv.addObject(casaedit);
+		mv.addObject("casas", todasCasas);
 		return mv;
 	}
 	

@@ -24,7 +24,7 @@
 								<h5 class="text-center" style="font-size: 150%;" th:text="${evento.local.localizacao}"></h5>
 								<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>
 								<h6 class="text-center"><a class="btn btn-primary btn-md"
-									th:href="@{/home/comprar/{id}(id=${evento.codigo})}"> 
+									th:href="@{/compra/{id}(id=${evento.codigo})}"> 
 									<span>Comprar</span></a></h6>
 					</div>				
 				</div>

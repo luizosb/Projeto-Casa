@@ -29,7 +29,7 @@ public class Casadeshow {
 	private String localizacao;
 	
 		
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="local", orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="local")
 	private List<Evento> envents;
 	
 	public Long getID() {

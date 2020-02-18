@@ -90,8 +90,8 @@ public class Evento {
 		return qtdIngresso;
 	}
 
-	public void setqtdIngresso(int qtdIngresso) {
-		this.qtdIngresso = qtdIngresso;
+	public int setqtdIngresso(int qtdIngresso) {
+		return this.qtdIngresso = qtdIngresso;
 	}
 
 	public Casadeshow getLocal() {
