@@ -32,7 +32,7 @@
 				<div class="form-group" th:classappend="${#fields.hasErrors('capacidade')} ? has-error">
 					<label for="capacidade" class="col-sm-2 control-label">Capacidade</label>
 					<div class="col-sm-2">
-						<input type="text" autocomplete = "off" class="form-control" id="capacidade"
+						<input type="number" autocomplete = "off" class="form-control" id="capacidade"
 							th:field="*{capacidade}" placeholder="Digite a capacidade."/>
 					</div>
 				</div>

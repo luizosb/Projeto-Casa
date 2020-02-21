@@ -9,16 +9,21 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gft.casadeeventos.model.Evento;
+import com.gft.casadeeventos.model.Ingresso;
 import com.gft.casadeeventos.repository.Eventos;
+import com.gft.casadeeventos.repository.Ingressos;
 
 @Controller
 @RequestMapping("/compra")
 public class Comprarcontroller {
 	
-private static final String COMPRAR_VIEW = "HomeComprar";
+	private static final String COMPRAR_VIEW = "HomeComprar";
 	
 	@Autowired
 	private Eventos event;
+	
+	@Autowired
+	private Ingressos ingrid;
 	
 	@RequestMapping(value ="/{codigo}", method= RequestMethod.GET)
 	public ModelAndView tela(@PathVariable Long codigo) {
@@ -32,21 +37,18 @@ private static final String COMPRAR_VIEW = "HomeComprar";
 	@RequestMapping(value="/{codigo}", method=RequestMethod.POST)
 	public ModelAndView comprar(@PathVariable("codigo") Long codigo, RedirectAttributes atributes, int qtdIngresso) {
 		Evento todosEventos = event.findById(codigo).get();
-		ModelAndView mv = new ModelAndView("redirect:/home");
-		if (todosEventos.getCapacidade() > 0) {
+		ModelAndView mv = new ModelAndView("redirect:/historico");
+		if (todosEventos.getCapacidade() > 0 && todosEventos.getCapacidade()-qtdIngresso >= 0) {
 		todosEventos.setCapacidade(todosEventos.getCapacidade() - qtdIngresso);
+		Ingresso ingr = new Ingresso(todosEventos.getCodigo(),todosEventos.getNome(), todosEventos.getPreco(),todosEventos.getData(),  qtdIngresso);
+		ingrid.save(ingr);
 		mv.addObject(todosEventos.getCapacidade());
 		event.save(todosEventos);
 		}
 		else 
 		{
-			atributes.addFlashAttribute("mensagem", "Fim");
+			
 		}
-		//todosEventos.setqtdIngresso(qtdIngresso);
-		//event.save(todosEventos);
-		//todosEventos.setCapacidade(todosEventos.getCapacidade()-todosEventos.getqtdIngresso());
-//		mv.addObject(new Evento());
-//		event.save(todosEventos);
 		return mv;
 	}
 	

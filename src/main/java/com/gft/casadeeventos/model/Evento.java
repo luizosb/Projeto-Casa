@@ -37,8 +37,8 @@ public class Evento {
 	private String nome;
 	
 	@NotNull(message="A capacidade não pode ser zero.")
-	@DecimalMin(value ="49.0", message="A capacidade mínima é de 50 pessoas pelo menos.")
-	@DecimalMax(value="60001.00", message="A capacidade máxima deve ser de 60001 pessoas.")
+	@DecimalMin(value ="0", message="A capacidade mínima é de 0 pessoas pelo menos.")
+	@DecimalMax(value="60001.00", message="A capacidade máxima deve ser de 60000 pessoas.")
 	private Integer capacidade;
 
 	@NotNull(message="Insira a data do evento.")
@@ -85,6 +85,14 @@ public class Evento {
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
 	}
+
+//	public int getQtdIngresso() {
+//		return qtdIngresso;
+//	}
+//
+//	public void setqtdIngresso(int qtdIngresso) {
+//		this.qtdIngresso = qtdIngresso;
+//	}
 
 	public int getqtdIngresso() {
 		return qtdIngresso;

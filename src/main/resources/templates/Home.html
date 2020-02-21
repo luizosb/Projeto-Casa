@@ -19,7 +19,8 @@
 				<div class="card" th:each="evento : ${eventos}">
 					<div class="card-body" >
 						<h2 class="card-title" style="font-size: 400%;" align="center" th:text="${evento.nome}"></h2>
-						<h4 class="text-center" th:text="|Capacidade: ${evento.capacidade}|"></h4>
+						<h4 class="text-center" th:unless="${evento.capacidade==0}" th:text="|Capacidade: ${evento.capacidade}|"></h4>
+					    <h4 class="text-center" th:if="${evento.capacidade ==0}" >Esgotado</h4>
 								<h5 class="text-center" style="font-size: 120%;" th:text="|Data do evento : ${{evento.data}}|"></h5>
 								<h5 class="text-center" style="font-size: 150%;" th:text="${evento.local.localizacao}"></h5>
 								<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>

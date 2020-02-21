@@ -8,7 +8,7 @@
 </head>
 <section layout:fragment="conteudo"> 
 
-	<form class="form-horizontal" method="POST">
+	<form class="form-horizontal" method="POST" >
 		<div class="panel panel-evento panel-defaut">
 			<div class="panel heading">
 				<div class="clearfix">
@@ -18,16 +18,16 @@
 			</div>
 			<div class="panel-body">
 				<div class="card" th:each="evento : ${eventos}">
-					<div class="card-body" >
+					<div class="card-body" style="padding-bottom: 1%;" >
 						<h2 class="card-title" style="font-size: 400%;" align="center" th:text="${evento.nome}"></h2>
-						<h4 class="text-center" th:text="|Capacidade: ${evento.capacidade}|"></h4>
+						<h4 class="text-center" th:text="|Capacidade : ${evento.capacidade}|"></h4>
 								<h5 class="text-center" style="font-size: 120%;" th:text="|Data do evento : ${{evento.data}}|"></h5>
 								<h5 class="text-center" style="font-size: 150%;" th:text="${evento.local.localizacao}"></h5>
 								<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>
 								<h3 class="input-append spinner text-center" data-trigger="spinner"> Ingressos:	
- 									<input type="number"id="qtdIngresso" name="qtdIngresso" value="1" min="1" max="5" step="1"/>
+ 									<input type="number"id="qtdIngresso" name="qtdIngresso" value="1" min="1" max="100" step="1"/>
 								</h3>
-					<button class="btn btn-primary btn-md" type ="submit" th:href="@{/compra/{id}(id=${evento.codigo})}"><span>Confirmar Compra</span></button>
+					<button class="btn btn-primary btn-md btn-comprar" style="margin-left: 46%;" type ="submit" th:href="@{/compra/{id}(id=${evento.codigo})}"><span>Confirmar Compra</span></button>
 					</div>				
 				</div>
 				</div>
